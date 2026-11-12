@@ -8,7 +8,7 @@ def logDebug(*args, **kwargs):
 
 # generate key table of czzfe crypto.
 
-ROUNDS = 6 # 6 in carrot2,3,4(CCZp); 8 only in carrot4 FFDBFFEE crypto
+ROUNDS = 6 # 6 in carrot1,2,3,4(CCZp); 8 only in carrot4 FFDBFFEE crypto
 
 def generateKeyTable(initKey : bytes | bytearray) -> bytes:
     assert len(initKey) == 16
@@ -46,7 +46,9 @@ def main():
     arg_parser.add_argument("--rounds", type=int, default=6)
     arg_parser.add_argument("--key", type=str, help="Specifies the key table file used for cryption.")
     args = arg_parser.parse_args()
-
+    # carrot1 .pvr.ccz CCZp init key is set by a function which is called by a function calling v34 = sub_3475A0("http://clientcdn.cairot.com/android/jumpic/cd_CN.jpg")
+    # sub_3A4550(0x89427C80LL, 0xF850A6D9, 0x14FB3BA0, 0x3A557437)
+    # init_key = bytes.fromhex("807C4289D9A650F8A03BFB143774553A") # carrot1 CZZp
     # carrot2 .pvr.ccz CCZp init key is set by a function which is called by a function calling logger_onEvent("game_data_clear", "@last")
     # CCFileUtilsAndroid::setPVRCCZInitKey(0x67AA748A, 0xFB868651, 0xE8243360, 0x34062D80);
     # init_key = bytes.fromhex("8A74AA67518686FB603324E8802D0634") # carrot2 CZZp
